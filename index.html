@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="stylesheet" href="awesomplete.css">
+    <link rel="stylesheet" href="awesomplete.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel Agency Booking Form</title>
@@ -111,9 +111,9 @@
                 <label for="phone">Phone Number:</label>
                 <input type="tel" id="phone" name="phone" required>
                 <label for="from">From:</label>
-                <select id="from" name="from" required></select>
+                <input type="text" id="from" name="from" class="awesomplete" required>
                 <label for="to">To:</label>
-                <select id="to" name="to" required></select>
+                <input type="text" id="to" name="to" class="awesomplete" required>
                 <label for="departure">Departure Date:</label>
                 <input type="date" id="departure" name="departure" required>
                 <label for="return">Return Date:</label>
@@ -122,27 +122,6 @@
                 <textarea id="message" name="message" rows="4"></textarea>
             </form>
         </div>
-		<label for="from">From:</label>
-            <input type="text" id="from" name="from" class="awesomplete" required>
-
-            <label for="to">To:</label>
-            <input type="text" id="to" name="to" class="awesomplete" required>
-            </div>
-        </div>
-    <script src="awesomplete.min.js"></script> <script>
-        fetch('data.json')
-            .then(response => response.json())
-            .then(airports => {
-                new Awesomplete(document.getElementById('from'), {
-                    list: airports,
-                    minChars: 2 // Start showing suggestions after 2 characters
-                });
-                new Awesomplete(document.getElementById('to'), {
-                    list: airports,
-                    minChars: 2
-                });
-            });
-    </script>
         <div class="info-panel">
             <h2>Travel Protection</h2>
             <p>Comprehensive travel insurance to cover unexpected cancellations, medical emergencies, and more.</p>
@@ -160,27 +139,41 @@
             let passengerList = document.getElementById("passengerList");
             let newPassenger = document.createElement("div");
             newPassenger.innerHTML = `<div class="traveler-section">Traveler ${travelerCount}:</div>
-                                     <div class="name-container">
-                                         <div>
-                                             <label for="firstName${travelerCount}">First Name:</label>
-                                             <input type="text" id="firstName${travelerCount}" name="firstName${travelerCount}" required>
-                                         </div>
-                                         <div>
-                                             <label for="lastName${travelerCount}">Last Name:</label>
-                                             <input type="text" id="lastName${travelerCount}" name="lastName${travelerCount}" required>
-                                         </div>
-                                     </div>
-                                     <label for="gender${travelerCount}">Gender:</label>
-                                     <select id="gender${travelerCount}" name="gender${travelerCount}" required>
-                                         <option value="Male">Male</option>
-                                         <option value="Female">Female</option>
-                                         <option value="Other">Other</option>
-                                     </select>
-                                     <label for="dob${travelerCount}">Date of Birth:</label>
-                                     <input type="date" id="dob${travelerCount}" name="dob${travelerCount}" required>`;
+                                        <div class="name-container">
+                                            <div>
+                                                <label for="firstName${travelerCount}">First Name:</label>
+                                                <input type="text" id="firstName${travelerCount}" name="firstName${travelerCount}" required>
+                                            </div>
+                                            <div>
+                                                <label for="lastName${travelerCount}">Last Name:</label>
+                                                <input type="text" id="lastName${travelerCount}" name="lastName${travelerCount}" required>
+                                            </div>
+                                        </div>
+                                        <label for="gender${travelerCount}">Gender:</label>
+                                        <select id="gender${travelerCount}" name="gender${travelerCount}" required>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                        <label for="dob${travelerCount}">Date of Birth:</label>
+                                        <input type="date" id="dob${travelerCount}" name="dob${travelerCount}" required>`;
             passengerList.appendChild(newPassenger);
         }
     </script>
-	<script src="awesomplete.min.js"></script>
+    <script src="awesomplete.min.js"></script>
+    <script>
+        fetch('data.json')
+            .then(response => response.json())
+            .then(airports => {
+                new Awesomplete(document.getElementById('from'), {
+                    list: airports,
+                    minChars: 2
+                });
+                new Awesomplete(document.getElementById('to'), {
+                    list: airports,
+                    minChars: 2
+                });
+            });
+    </script>
 </body>
 </html>

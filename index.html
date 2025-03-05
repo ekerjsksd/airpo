@@ -114,11 +114,21 @@
                 <input type="text" id="from" name="from" class="awesomplete" required>
                 <label for="to">To:</label>
                 <input type="text" id="to" name="to" class="awesomplete" required>
-                <label for="departure">Departure Date:</label>
-                <input type="date" id="departure" name="departure" required>
-                <label for="return">Return Date:</label>
-                <input type="date" id="return" name="return" required>
-                <label for="message">Additional Requests:</label>
+<label>Trip Type:</label>
+<div>
+    <input type="radio" id="roundTrip" name="tripType" value="roundTrip" checked onclick="toggleReturnDate(true)">
+    <label for="roundTrip">Round Trip</label>
+    <input type="radio" id="oneWay" name="tripType" value="oneWay" onclick="toggleReturnDate(false)">
+    <label for="oneWay">One Way</label>
+</div>
+
+<label for="departure">Departure Date:</label>
+<input type="date" id="departure" name="departure" required>
+
+<label for="return">Return Date:</label>
+<input type="date" id="return" name="return" required>
+
+            
                 <textarea id="message" name="message" rows="4"></textarea>
             </form>
         </div>
@@ -133,6 +143,12 @@
         </div>
     </div>
     <script>
+        function toggleReturnDate(enable) {
+    const returnDate = document.getElementById("return");
+    returnDate.disabled = !enable;
+    if (!enable) returnDate.value = "";
+}
+
         let travelerCount = 1;
         function addPassenger() {
             travelerCount++;

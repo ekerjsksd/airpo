@@ -6,36 +6,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fly in Flights</title>
     <style>
-       body {
+        body {
             font-family: Arial, sans-serif;
-            background: url('https://media.istockphoto.com/id/185331541/photo/sunrise-flight.jpg?s=612x612&w=0&k=20&c=pxyKNaVaX3zdRN8y428UN5KVnd4t9L3zJUCCAB_dRYw=') no-repeat center center/cover;
+            background: url('https://us.123rf.com/450wm/photoraidz/photoraidz1801/photoraidz180100019/93621079-aircraft-in-the-sky-and-sun-vector-illustration.jpg?ver=6') no-repeat center center/cover;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             margin: 0;
             padding: 20px;
+            box-sizing: border-box;
         }
         .wrapper {
             display: flex;
-            justify-content: space-between;
-            width: 90%;
+            flex-direction: column;
+            width: 95%;
             max-width: 1100px;
             background: rgba(255, 255, 255, 0.4);
-            padding: 30px;
+            padding: 20px;
             border-radius: 12px;
             box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
             box-sizing: border-box;
         }
-        .container {
-            width: 60%;
+        @media (min-width: 768px) {
+            .wrapper {
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 30px;
+            }
+            .container {
+                width: 60%;
+            }
+            .info-panel {
+                width: 35%;
+            }
+        }
+        .container, .info-panel {
+            box-sizing: border-box;
+            width: 100%;
         }
         .info-panel {
-            width: 35%;
             background: rgba(200, 230, 255, 0.4);
             padding: 20px;
             border-radius: 10px;
             text-align: center;
+            margin-top: 20px;
         }
         h2 {
             text-align: center;
@@ -44,6 +59,8 @@
         label {
             font-weight: bold;
             color: #003366;
+            display: block; /* Make labels block-level */
+            margin-bottom: 5px; /* Add space below labels */
         }
         .traveler-section {
             font-weight: bold;
@@ -52,35 +69,42 @@
         }
         .name-container {
             display: flex;
+            flex-direction: column;
             gap: 10px;
         }
+        @media (min-width: 576px) {
+            .name-container {
+                flex-direction: row;
+            }
+        }
         input, select, textarea {
-            width: 100%;
-            padding: 12px;
+            width: calc(100% - 24px); /* Adjust width for padding */
+            padding: 8px 12px; /* Smaller padding */
             margin-top: 5px;
             border: 1px solid #007bff;
             border-radius: 5px;
             box-sizing: border-box;
-            font-size: 16px;
+            font-size: 14px; /* Smaller font size */
         }
         button {
             background: #007bff;
             color: white;
-            padding: 12px;
+            padding: 10px 15px; /* Smaller padding */
             border: none;
             border-radius: 5px;
             cursor: pointer;
             margin-top: 10px;
             width: 100%;
-            font-size: 18px;
+            font-size: 16px; /* Smaller font size */
         }
         button:hover {
             background: #0056b3;
         }
         .trip-type-container {
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
-            gap: 15px;
+            gap: 10px; /* Smaller gap */
             margin-bottom: 10px;
         }
         .trip-type-label {
@@ -91,7 +115,7 @@
         .trip-type-option {
             display: flex;
             align-items: center;
-            padding: 10px 15px;
+            padding: 8px 12px; /* Smaller padding */
             border: 1px solid #AED6F1;
             border-radius: 8px;
             cursor: pointer;
@@ -101,10 +125,11 @@
             display: none;
         }
         .trip-type-option label {
-            margin-left: 10px;
+            margin-left: 8px; /* Smaller margin */
             cursor: pointer;
             font-weight: 500;
             color: #333;
+            font-size: 14px; /* Smaller font size */
         }
         .trip-type-option.selected {
             border-color: #3498DB;
@@ -115,15 +140,27 @@
         }
         .from-to-container {
             display: flex;
+            flex-direction: column;
             gap: 10px;
+        }
+        @media (min-width: 576px) {
+            .from-to-container {
+                flex-direction: row;
+            }
         }
         .from-to-container div {
             flex: 1;
         }
         .date-container {
             display: flex;
+            flex-direction: column;
             gap: 10px;
             margin-top: 10px;
+        }
+        @media (min-width: 576px) {
+            .date-container {
+                flex-direction: row;
+            }
         }
         .date-container div {
             flex: 1;

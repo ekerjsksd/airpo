@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fly in Flights</title>
     <style>
-        body {
+       body {
             font-family: Arial, sans-serif;
             background: url('https://media.istockphoto.com/id/185331541/photo/sunrise-flight.jpg?s=612x612&w=0&k=20&c=pxyKNaVaX3zdRN8y428UN5KVnd4t9L3zJUCCAB_dRYw=') no-repeat center center/cover;
             display: flex;
@@ -17,22 +17,22 @@
             padding: 20px;
         }
         .wrapper {
-    display: flex;
-    justify-content: space-between;
-    width: 90%;
-    max-width: 1100px;
-    background: rgba(255, 255, 255, 0.4); /* More transparency */
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
-    box-sizing: border-box;
-}
+            display: flex;
+            justify-content: space-between;
+            width: 90%;
+            max-width: 1100px;
+            background: rgba(255, 255, 255, 0.4);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
+            box-sizing: border-box;
+        }
         .container {
             width: 60%;
         }
         .info-panel {
             width: 35%;
-            background: rgba(200, 230, 255, 0.4); /* More transparency */
+            background: rgba(200, 230, 255, 0.4);
             padding: 20px;
             border-radius: 10px;
             text-align: center;
@@ -76,6 +76,57 @@
         }
         button:hover {
             background: #0056b3;
+        }
+        .trip-type-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+        .trip-type-label {
+            font-weight: 600;
+            color: #2C3E50;
+            margin-right: 10px;
+        }
+        .trip-type-option {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            border: 1px solid #AED6F1;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+        .trip-type-option input[type="radio"] {
+            display: none;
+        }
+        .trip-type-option label {
+            margin-left: 10px;
+            cursor: pointer;
+            font-weight: 500;
+            color: #333;
+        }
+        .trip-type-option.selected {
+            border-color: #3498DB;
+            background-color: #EBF5FB;
+        }
+        .trip-type-option:hover {
+            border-color: #3498DB;
+        }
+        .from-to-container {
+            display: flex;
+            gap: 10px;
+        }
+        .from-to-container div {
+            flex: 1;
+        }
+        .date-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .date-container div {
+            flex: 1;
         }
     </style>
 </head>

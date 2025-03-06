@@ -1,0 +1,11 @@
+.from-to-container {
+    display: flex;
+    flex-direction: column; /* Stack fields vertically on smaller screens */
+    gap: 10px;
+}
+@media (min-width: 576px) { /* Adjust fields for larger screens */
+    .from-to-container {
+        flex-direction: row;
+        align-items: flex-start; /* Align items to the top */
+    }
+}

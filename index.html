@@ -8,49 +8,34 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: url('https://us.123rf.com/450wm/photoraidz/photoraidz1801/photoraidz180100019/93621079-aircraft-in-the-sky-and-sun-vector-illustration.jpg?ver=6') no-repeat center center/cover;
+            background: url('https://media.istockphoto.com/id/185331541/photo/sunrise-flight.jpg?s=612x612&w=0&k=20&c=pxyKNaVaX3zdRN8y428UN5KVnd4t9L3zJUCCAB_dRYw=') no-repeat center center/cover;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             margin: 0;
             padding: 20px;
-            box-sizing: border-box;
         }
         .wrapper {
             display: flex;
-            flex-direction: column;
-            width: 95%;
+            justify-content: space-between;
+            width: 90%;
             max-width: 1100px;
             background: rgba(255, 255, 255, 0.4);
-            padding: 20px;
+            padding: 30px;
             border-radius: 12px;
             box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
             box-sizing: border-box;
         }
-        @media (min-width: 768px) {
-            .wrapper {
-                flex-direction: row;
-                justify-content: space-between;
-                padding: 30px;
-            }
-            .container {
-                width: 60%;
-            }
-            .info-panel {
-                width: 35%;
-            }
-        }
-        .container, .info-panel {
-            box-sizing: border-box;
-            width: 100%;
+        .container {
+            width: 60%;
         }
         .info-panel {
+            width: 35%;
             background: rgba(200, 230, 255, 0.4);
             padding: 20px;
             border-radius: 10px;
             text-align: center;
-            margin-top: 20px;
         }
         h2 {
             text-align: center;
@@ -59,8 +44,6 @@
         label {
             font-weight: bold;
             color: #003366;
-            display: block; /* Make labels block-level */
-            margin-bottom: 5px; /* Add space below labels */
         }
         .traveler-section {
             font-weight: bold;
@@ -69,42 +52,35 @@
         }
         .name-container {
             display: flex;
-            flex-direction: column;
             gap: 10px;
         }
-        @media (min-width: 576px) {
-            .name-container {
-                flex-direction: row;
-            }
-        }
         input, select, textarea {
-            width: calc(100% - 24px); /* Adjust width for padding */
-            padding: 8px 12px; /* Smaller padding */
+            width: 100%;
+            padding: 12px;
             margin-top: 5px;
             border: 1px solid #007bff;
             border-radius: 5px;
             box-sizing: border-box;
-            font-size: 14px; /* Smaller font size */
+            font-size: 16px;
         }
         button {
             background: #007bff;
             color: white;
-            padding: 10px 15px; /* Smaller padding */
+            padding: 12px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             margin-top: 10px;
             width: 100%;
-            font-size: 16px; /* Smaller font size */
+            font-size: 18px;
         }
         button:hover {
             background: #0056b3;
         }
         .trip-type-container {
             display: flex;
-            flex-wrap: wrap;
             align-items: center;
-            gap: 10px; /* Smaller gap */
+            gap: 15px;
             margin-bottom: 10px;
         }
         .trip-type-label {
@@ -115,7 +91,7 @@
         .trip-type-option {
             display: flex;
             align-items: center;
-            padding: 8px 12px; /* Smaller padding */
+            padding: 10px 15px;
             border: 1px solid #AED6F1;
             border-radius: 8px;
             cursor: pointer;
@@ -125,11 +101,10 @@
             display: none;
         }
         .trip-type-option label {
-            margin-left: 8px; /* Smaller margin */
+            margin-left: 10px;
             cursor: pointer;
             font-weight: 500;
             color: #333;
-            font-size: 14px; /* Smaller font size */
         }
         .trip-type-option.selected {
             border-color: #3498DB;
@@ -140,27 +115,15 @@
         }
         .from-to-container {
             display: flex;
-            flex-direction: column;
             gap: 10px;
-        }
-        @media (min-width: 576px) {
-            .from-to-container {
-                flex-direction: row;
-            }
         }
         .from-to-container div {
             flex: 1;
         }
         .date-container {
             display: flex;
-            flex-direction: column;
             gap: 10px;
             margin-top: 10px;
-        }
-        @media (min-width: 576px) {
-            .date-container {
-                flex-direction: row;
-            }
         }
         .date-container div {
             flex: 1;
@@ -172,6 +135,37 @@
         <div class="container">
             <h2>Fly in Flights</h2>
             <form id="bookingForm">
+                <div class="trip-type-container">
+                    <label class="trip-type-label">Trip Type:</label>
+                    <div class="trip-type-option selected" id="roundTripOption">
+                        <input type="radio" id="roundTrip" name="tripType" value="roundTrip" checked onclick="toggleReturnDate()">
+                        <label for="roundTrip">Round Trip</label>
+                    </div>
+                    <div class="trip-type-option" id="oneWayOption">
+                        <input type="radio" id="oneWay" name="tripType" value="oneWay" onclick="toggleReturnDate()">
+                        <label for="oneWay">One Way</label>
+                    </div>
+                </div>
+                <div class="from-to-container">
+                    
+                       <div class="from-container"> <label for="from">From:</label>
+                        <input type="text" id="from" name="from" class="awesomplete" required>
+                    </div>
+                    
+                        <div class="to-container"> <label for="to">To:</label>
+                        <input type="text" id="to" name="to" class="awesomplete" required>
+                    </div>
+                </div>
+               <div class="date-container" id="dateContainer">
+    <div>
+        <label for="departureDate">Departure Date:</label>
+        <input type="date" id="departureDate" name="departureDate" required>
+    </div>
+    <div id="returnDateDiv">
+        <label for="returnDate">Return Date:</label>
+        <input type="date" id="returnDate" name="returnDate" required>
+    </div>
+</div>
                 <div id="passengerList">
                     <div class="traveler-section">Passenger 1:</div>
                     <div class="name-container">
@@ -198,26 +192,6 @@
                 <input type="email" id="email" name="email" required>
                 <label for="phone">Phone Number:</label>
                 <input type="tel" id="phone" name="phone" required>
-                <label for="from">From:</label>
-                <input type="text" id="from" name="from" class="awesomplete" required>
-                <label for="to">To:</label>
-                <input type="text" id="to" name="to" class="awesomplete" required>
-<label>Trip Type:</label>
-<div>
-    <input type="radio" id="roundTrip" name="tripType" value="roundTrip" checked onclick="toggleReturnDate(true)">
-    <label for="roundTrip">Round Trip</label>
-    <input type="radio" id="oneWay" name="tripType" value="oneWay" onclick="toggleReturnDate(false)">
-    <label for="oneWay">One Way</label>
-</div>
-
-<label for="departure">Departure Date:</label>
-<input type="date" id="departure" name="departure" required>
-
-<label for="return">Return Date:</label>
-<input type="date" id="return" name="return" required>
-
-            
-                <textarea id="message" name="message" rows="4"></textarea>
             </form>
         </div>
         <div class="info-panel">
@@ -231,13 +205,25 @@
         </div>
     </div>
     <script>
-        function toggleReturnDate(enable) {
-    const returnDate = document.getElementById("return");
-    returnDate.disabled = !enable;
-    if (!enable) returnDate.value = "";
-}
-
         let travelerCount = 1;
+
+      function toggleReturnDate() {
+        const roundTripRadio = document.getElementById("roundTrip");
+        const returnDateDiv = document.getElementById("returnDateDiv");
+        const roundTripOption = document.getElementById("roundTripOption");
+        const oneWayOption = document.getElementById("oneWayOption");
+
+        if (roundTripRadio.checked) {
+            returnDateDiv.style.display = "block"; // Show return date
+            roundTripOption.classList.add("selected");
+            oneWayOption.classList.remove("selected");
+        } else {
+            returnDateDiv.style.display = "none"; // Hide return date
+            oneWayOption.classList.add("selected");
+            roundTripOption.classList.remove("selected");
+        }
+    }
+
         function addPassenger() {
             travelerCount++;
             let passengerList = document.getElementById("passengerList");
@@ -263,6 +249,13 @@
                                         <input type="date" id="dob${travelerCount}" name="dob${travelerCount}" required>`;
             passengerList.appendChild(newPassenger);
         }
+
+        // Initialize return date state on page load
+        toggleReturnDate();
+
+        // Add event listeners for trip type radio buttons
+        document.getElementById("roundTrip").addEventListener("change", toggleReturnDate);
+        document.getElementById("oneWay").addEventListener("change", toggleReturnDate);
     </script>
     <script src="awesomplete.min.js"></script>
     <script>
